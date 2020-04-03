@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.AppDomain" Version="2.0.11" />
+    <PackageReference Include="XL.Hyperion.Tools.Data.Config" Version="1.0.0-CI-20200226-050644" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\XL.Hyperion.Scraper.Amazoncommx.DataEngine\XL.Hyperion.Scraper.Amazoncommx.Data.csproj" />
+    <ProjectReference Include="..\..\XL.Hyperion.Scraper.Amazoncommx.Logic\XL.Hyperion.Scraper.Amazoncommx.Logic.csproj" />
+  </ItemGroup>
+
+</Project>

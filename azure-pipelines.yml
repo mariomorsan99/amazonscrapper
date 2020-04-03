@@ -1,0 +1,49 @@
+# Azure Function
+
+trigger:
+- master
+- features/*
+- fixes/*
+- improvements/*
+
+pool:
+  name: Hosted Ubuntu 1604
+
+variables:
+  releaseConfiguration: 'Release'
+  debugConfiguration: 'Debug'
+
+steps:
+# any branch
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    vstsFeed: '/abb37fe8-7c48-4920-b434-c8763779f4c3'
+# any branch but master
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    arguments: '--configuration $(debugConfiguration)'
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+# master branch
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    projects: '**/XL.Hyperion.FunctionApp.Scraper.Amazoncommx.csproj'
+    arguments: '--configuration $(releaseConfiguration) --output $(Build.ArtifactStagingDirectory)/drop'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+# master branch
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/drop/'
+    includeRootFolder: false
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+# master branch
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

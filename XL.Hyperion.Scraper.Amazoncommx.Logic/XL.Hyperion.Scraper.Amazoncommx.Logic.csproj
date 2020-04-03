@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="XL.Hyperion.Domain" Version="1.0.0-CI-20200304-051245" />
+    <PackageReference Include="XL.Hyperion.Scraper.Data" Version="1.0.0-CI-20200227-033920" />
+    <PackageReference Include="XL.Hyperion.Scraper.Event" Version="1.0.0-CI-20200227-033920" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\XL.Hyperion.Scraper.Amazoncommx.DataEngine\XL.Hyperion.Scraper.Amazoncommx.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ScrapySharp" Version="3.0.0" />
+    <PackageReference Include="XL.Hyperion.Domain" Version="1.0.0-CI-20200304-051245" />
+    <PackageReference Include="XL.Hyperion.Scraper.Net" Version="1.0.0-CI-20200227-033920" />
+    <PackageReference Include="XL.Hyperion.Tools" Version="1.0.0-CI-20200226-050644" />
+  </ItemGroup>
+
+</Project>
